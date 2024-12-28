@@ -1,0 +1,155 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+/* General Styles for the Aside */
+aside {
+    position: fixed;
+    right: 0;
+    top: 25%;
+    height: auto;
+    width: 60px;
+    /* Keep it narrow by default */
+    background: #333;
+    color: #fff;
+    padding: 07px 0;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    overflow: hidden;
+    transition: width 0.3s ease-in-out;
+}
+
+/* Style for the toggle button */
+#toggle-btn {
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#toggle-btn i {
+    font-size: 16px;
+    color: #fff;
+}
+
+/* Style for List Items */
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside ul li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    color: #fff;
+}
+
+aside ul li:hover {
+    background: #444;
+    /* Highlight the item on hover */
+}
+
+/* Icons */
+aside ul li i {
+    font-size: 18px;
+    margin-right: 10px;
+    color: #fff;
+}
+
+/* Span elements - Hidden by default */
+aside ul li span {
+    display: none;
+    /* Initially hide the text */
+    color: #fff;
+    font-size: 14px;
+    white-space: nowrap;
+    /* Prevent text wrapping */
+}
+
+/* Show span on hover */
+aside ul li:hover span {
+    display: inline;
+    /* Show the text on hover */
+}
+
+/* Active state - Expanded width */
+aside.active {
+    width: 200px;
+    position: fixed;
+    right: 22px;
+    top: 25%;
+    height: auto;
+    z-index: 999;
+    transition: width 0.3s ease-in-out;
+}
+
+aside.active ul li span {
+    display: inline; 
+    /* Ensure span is displayed when active */
+}
+
+/* Navbar Styles */
+#nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 20px;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content */
+main {
+    margin: 20px;
+    margin-right: 220px;
+    padding: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    #nav-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #nav-bar .logo img {
+        height: 40px;
+    }
+
+    #nav-bar .active-page {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    #nav-bar {
+        padding: 10px;
+    }
+
+    #nav-bar .logo img {
+        height: 35px;
+    }
+
+    #nav-bar .active-page {
+        font-size: 14px;
+    }
+}

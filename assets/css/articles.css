@@ -1,0 +1,31 @@
+/* Articles Section */
+#articles-section {
+    padding: 20px;
+}
+
+#articles-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.article {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.article h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.article p {
+    margin: 5px 0;
+}
+
+.article p strong {
+    font-weight: bold;
+}

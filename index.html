@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body{
+            scroll-behavior: Smooth;
+        }
+        #navbar.sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgb(30 58 138 / var(--tw-bg-opacity, 1));
+            z-index: 1000;
+            /* Ensure it stays on top */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Optional shadow for visibility */
+        }
+
+        /* Spacer to prevent layout shift */
+        .navbar-spacer {
+            height: 80px;
+            /* Adjust to match navbar height */
+        }
+
+        /* General Styling for Hamburger Menu */
+        #hamburger {
+            cursor: pointer;
+        }
+
+        #nav-links {
+            display: none;
+            /* Hidden by default */
+        }
+
+        #nav-links.flex {
+            display: flex;
+            /* Flex display when active */
+        }
+
+
+        .service-card {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            border-radius: 0.5rem;
+        }
+
+        .card-header {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.5s ease;
+        }
+
+        .card-content {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.5s ease;
+            overflow: hidden;
+            height: auto;
+            /* Ensures content expands to fit */
+        }
+
+        .service-card.active .card-header {
+            top: 10%;
+            color: black;
+            transform: translate(-50%, 0);
+        }
+
+        .service-card.active .card-content {
+            top: 0;
+            opacity: 0.9;
+            pointer-events: auto;
+            overflow: visible;
+            animation: autoScroll 10s linear infinite;
+            /* Smooth auto-scroll */
+            overflow-y: scroll;
+        }
+
+        @keyframes autoScroll {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(calc(-100% + 300px));
+                /* Matches max-height */
+            }
+        }
+
+        @media (min-width: 768px) {
+            #nav-links {
+                display: flex !important;
+                /* Always visible on larger screens */
+            }
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 45s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <header class="bg-blue-900 text-white"></header>
+    <!-- Hero Section -->
+    <section class="bg-cover bg-center h-96"
+        style="background-image: url('https://source.unsplash.com/featured/?church');">
+        <div class="h-full bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white">
+            <h2 class="text-4xl font-bold mb-4">Welcome to Way Preparers Church</h2>
+            <p class="text-lg mb-6">A community of faith, love, and hope.</p>
+            <a href="#events" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-semibold">
+                Join Our Events
+            </a>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-3xl font-semibold text-blue-900 mb-6">About Us</h3>
+            <p class="text-gray-700 leading-relaxed">
+                Way Preparers Church is a place where everyone is welcome to come and experience God's love. We are
+                committed
+                to spreading the gospel, serving our community, and nurturing spiritual growth.
+            </p>
+        </div>
+    </section>
+    <!-- Sermons Section -->
+    <section id="sermons" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-3xl font-semibold text-blue-900 mb-6">Recent Sermons</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white shadow-md p-6 rounded-md">
+                    <h4 class="font-semibold text-xl mb-2">The Power of Prayer</h4>
+                    <p class="text-gray-700">Discover how prayer can transform your life.</p>
+                </div>
+                <div class="bg-white shadow-md p-6 rounded-md">
+                    <h4 class="font-semibold text-xl mb-2">Faith in Difficult Times</h4>
+                    <p class="text-gray-700">How to hold onto faith during challenging seasons.</p>
+                </div>
+                <div class="bg-white shadow-md p-6 rounded-md">
+                    <h4 class="font-semibold text-xl mb-2">Walking in Grace</h4>
+                    <p class="text-gray-700">Living a life of grace and purpose every day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Events Section -->
+    <!-- Upcoming Events Section -->
+    <section id="events" class="py-16 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-3xl font-bold text-blue-800 mb-8">Upcoming Events</h3>
+            <p class="text-gray-700 mb-6">Join us in our upcoming activities and be part of our community:</p>
+            <!-- Marquee Container -->
+            <div class="overflow-hidden relative">
+                <div class="whitespace-nowrap animate-marquee">
+                    <span class="inline-block mx-10 text-lg font-semibold text-blue-900">Community Outreach - Jan 20,
+                        2025</span>
+                    <span class="inline-block mx-10 text-lg font-semibold text-blue-900">Sunday Worship Service - Every
+                        Sunday at 10 AM</span>
+                    <span class="inline-block mx-10 text-lg font-semibold text-blue-900">Youth Fellowship - Fridays at 6
+                        PM</span>
+                    <span class="inline-block mx-10 text-lg font-semibold text-blue-900">Bible Study - Wednesdays at 7
+                        PM</span>
+                    <span class="inline-block mx-10 text-lg font-semibold text-blue-900">Charity Run - March 15,
+                        2025</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="order-of-services" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-blue-800 text-center mb-8">Order of Services</h3>
+            <p class="text-gray-700 text-center mb-12">
+                Explore our Sunday Worship Services schedule and details.
+            </p>
+
+            <!-- Services Layout -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- First Service -->
+                <div class="relative bg-cover bg-center shadow-lg rounded-lg overflow-hidden h-64 md:h-80 transition-all duration-500 service-card"
+                    style="background-image: url('https://via.placeholder.com/400/1E90FF/FFFFFF?text=First+Service');">
+                    <h4
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-white bg-black bg-opacity-50 px-4 py-2 transition-all duration-500 cursor-pointer card-header">
+                        First Service - 8:00 AM
+                    </h4>
+                    <div
+                        class="absolute top-full left-0 w-full bg-white p-6 opacity-0 pointer-events-none transition-all duration-500 card-content">
+                        <h4 class="text-xl font-semibold text-blue-900 mb-4">First Service - 8:00 AM</h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li><strong class="text-blue-800">Prayer:</strong> Begin the day by inviting God's presence
+                                into the service.</li>
+                            <li><strong class="text-blue-800">Praise and Worship:</strong> Lift hearts in praise with
+                                music glorifying God's name.</li>
+                            <li><strong class="text-blue-800">Scripture Reading:</strong> A Bible passage is read to
+                                inspire and encourage the congregation.</li>
+                            <li><strong class="text-blue-800">Sermon:</strong> The pastor shares the Word of God,
+                                teaching and guiding us in faith.</li>
+                            <li><strong class="text-blue-800">Offering:</strong> Present tithes and gifts as an act of
+                                worship and stewardship.</li>
+                            <li><strong class="text-blue-800">Closing Prayer:</strong> Conclude by thanking God and
+                                asking blessings for the week ahead.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Second Service -->
+                <div class="relative bg-cover bg-center shadow-lg rounded-lg overflow-hidden h-64 md:h-80 transition-all duration-500 service-card"
+                    style="background-image: url('https://via.placeholder.com/400/FF4500/FFFFFF?text=Second+Service');">
+                    <h4
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-white bg-black bg-opacity-50 px-4 py-2 transition-all duration-500 cursor-pointer card-header">
+                        Second Service - 10:30 AM
+                    </h4>
+                    <div
+                        class="absolute top-full left-0 w-full bg-white p-6 opacity-0 pointer-events-none transition-all duration-500 card-content">
+                        <h4 class="text-xl font-semibold text-blue-900 mb-4">Second Service - 10:30 AM</h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li><strong class="text-blue-800">Prayer:</strong> We welcome God's presence into the
+                                service.</li>
+                            <li><strong class="text-blue-800">Praise and Worship:</strong> Songs of praise are sung to
+                                glorify God's name.</li>
+                            <li><strong class="text-blue-800">Scripture Reading:</strong> A Bible passage is read to
+                                uplift the congregation.</li>
+                            <li><strong class="text-blue-800">Sermon:</strong> The pastor shares God's teachings to
+                                guide us in our spiritual walk.</li>
+                            <li><strong class="text-blue-800">Offering:</strong> Tithes and offerings are presented as
+                                an act of worship.</li>
+                            <li><strong class="text-blue-800">Closing Prayer:</strong> We conclude by thanking God for
+                                His blessings.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Youth Service -->
+                <div class="relative bg-cover bg-center shadow-lg rounded-lg overflow-hidden h-64 md:h-80 transition-all duration-500 service-card"
+                    style="background-image: url('https://via.placeholder.com/400/32CD32/FFFFFF?text=Youth+Service');">
+                    <h4
+                        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-white bg-black bg-opacity-50 px-4 py-2 transition-all duration-500 cursor-pointer card-header">
+                        Youth Service - 12:00 PM
+                    </h4>
+                    <div
+                        class="absolute top-full left-0 w-full bg-white p-6 opacity-0 pointer-events-none transition-all duration-500 card-content">
+                        <h4 class="text-xl font-semibold text-blue-900 mb-4">Youth Service - 12:00 PM</h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li><strong class="text-blue-800">Prayer:</strong> Begin with a time of prayer and worship.
+                            </li>
+                            <li><strong class="text-blue-800">Praise and Worship:</strong> Youth-led songs glorifying
+                                God.</li>
+                            <li><strong class="text-blue-800">Scripture Reading:</strong> Bible reading relevant to
+                                youth challenges and growth.</li>
+                            <li><strong class="text-blue-800">Sermon:</strong> A message addressing youth needs and
+                                spiritual development.</li>
+                            <li><strong class="text-blue-800">Offering:</strong> Youth contribute tithes and gifts in
+                                worship.</li>
+                            <li><strong class="text-blue-800">Closing Prayer:</strong> Blessing and guidance for the
+                                youth in their daily lives.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        document.querySelectorAll('.service-card').forEach((card) => {
+            const header = card.querySelector('.card-header');
+            const content = card.querySelector('.card-content');
+
+            header.addEventListener('click', () => {
+                const isActive = card.classList.contains('active');
+
+                // Reset all cards
+                document.querySelectorAll('.service-card').forEach((c) => {
+                    c.classList.remove('active');
+                    c.querySelector('.card-header').classList.remove('bg-white', 'text-black');
+                    c.querySelector('.card-header').classList.add('bg-black', 'text-white');
+                    c.querySelector('.card-header').style.top = '50%';
+                    c.querySelector('.card-header').style.transform = 'translate(-50%, -50%)';
+                    c.querySelector('.card-content').classList.add('opacity-0', 'pointer-events-none');
+                });
+
+                // Toggle the clicked card
+                if (!isActive) {
+                    card.classList.add('active');
+                    header.classList.add('bg-white', 'text-black');
+                    header.classList.remove('bg-black', 'text-white');
+                    header.style.top = '0';
+                    header.style.transform = 'translate(0, 0)';
+                    content.classList.remove('opacity-0', 'pointer-events-none');
+                }
+            });
+        });
+
+    </script>
+    <!-- Footer -->
+    <footer id="contact" class="bg-blue-900 text-white py-8"></footer>
+    <script src="assets/js/script.js"></script>
+    <script>
+        // Select the navbar element
+        const navbar = document.querySelector('.container');
+        const navbarSpacer = document.createElement('div'); // Create a spacer element
+        navbarSpacer.classList.add('navbar-spacer');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 0) {
+                if (!navbar.classList.contains('sticky')) {
+                    navbar.classList.add('sticky');
+                    navbar.parentNode.insertBefore(navbarSpacer, navbar.nextSibling); // Add the spacer below the navbar
+                }
+            } else {
+                if (navbar.classList.contains('sticky')) {
+                    navbar.classList.remove('sticky');
+                    if (navbarSpacer.parentNode) {
+                        navbarSpacer.parentNode.removeChild(navbarSpacer); // Remove the spacer
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>

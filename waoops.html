@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oops - Payment Failed</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .oops-container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .oops-container h1 {
+            color: #dc3545;
+        }
+
+        .oops-container p {
+            margin: 10px 0 20px;
+        }
+
+        .whatsapp-button {
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #1ebe57;
+        }
+    </style>
+</head>
+<body>
+    <div class="oops-container">
+        <h1>Oops! Payment Failed</h1>
+        <p>We couldn't complete your payment. You can contact the seller to purchase directly.</p>
+        <a id="whatsapp-link" class="whatsapp-button" href="#" target="_blank">
+            Contact Seller on WhatsApp
+        </a>
+    </div>
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const sellerPhone = urlParams.get('phone');
+        const amount = urlParams.get('amount');
+
+        // Set the WhatsApp link dynamically
+        const whatsappLink = `https://wa.me/${sellerPhone}?text=Hi%20there,%20I%20want%20to%20purchase%20an%20article%20worth%20Ksh%20${amount}.`;
+        document.getElementById('whatsapp-link').href = whatsappLink;
+    </script>
+</body>
+</html>
